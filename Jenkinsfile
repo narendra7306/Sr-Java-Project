@@ -8,9 +8,9 @@ pipeline {
             }
         }
         stage('maven build') {
-           // getting maven home path
-           def mvnHome = tool name: 'maven-3.9.1', type: 'maven'
-           sh "mvn clean package"
+            steps {
+                tool name: 'maven-3.9.1', type: 'maven'
+             }
         }
     }
 }
