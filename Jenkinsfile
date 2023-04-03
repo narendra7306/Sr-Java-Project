@@ -12,5 +12,10 @@ pipeline {
                 tool name: 'maven-3.9.1', type: 'maven'
              }
         }
+        stage('build docker image') {
+            steps {
+                sh 'docker build -t narendra7306/nginx:1.0 .'
+            }
+        }
     }
 }
