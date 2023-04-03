@@ -14,7 +14,6 @@ pipeline {
         }
         stage('build docker image') {
             steps {
-                tool name: '', type: 'dockerTool'
                 sh 'docker build -t narendra7306/nginx:1.0 .'
             }
         }
