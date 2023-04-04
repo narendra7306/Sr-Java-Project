@@ -20,7 +20,7 @@ pipeline {
             steps {
                 def dockerHome = tool 'My-docker'
             }
-            steps{
+            steps {
                 env.PATH = "${dockerHome}/bin:${env.PATH}"
             }
                
