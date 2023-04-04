@@ -13,7 +13,9 @@ pipeline {
             }
         }
         stage('docker build') {
-          sh 'docker build -t narendra7306/nginx:1.0 .'
+            steps {
+                sh 'docker build -t narendra7306/nginx:1.0 .'
+            }
         }
     }
 }
