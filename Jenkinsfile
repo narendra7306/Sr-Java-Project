@@ -18,7 +18,6 @@ pipeline {
         }
         stage('docker build') {
             steps {
-                tool name: 'docker', type: 'dockerTool'
                 script {
                     dockerImage = docker.build registry
                 }
