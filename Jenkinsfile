@@ -1,6 +1,6 @@
 pipeline {
     environment {
-        registry = "docker_hub_account/narendra7306"
+        registry = "hub.docker.com//narendra7306"
         registryCredential = 'dockerhub'
     }
     agent any
@@ -15,15 +15,6 @@ pipeline {
             steps {
                 tool name: 'maven-3.9.1', type: 'maven'
             }
-        }
-        stage('Initialize') {
-            steps {
-                def dockerHome = tool 'My-docker'
-            }
-            steps {
-                env.PATH = "${dockerHome}/bin:${env.PATH}"
-            }
-               
         }
         stage('docker build') {
             steps {
