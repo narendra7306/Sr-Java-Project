@@ -4,7 +4,7 @@ pipeline {
         maven 'maven-3.9.1' 
     }
     environment {
-        registry = "20.244.33.239:8081/docker-local/java-app:1.0"
+        registry = "20.244.33.239:8081/default-docker-local/java-app:1.0"
         dockerImage = ""
     }
     stages {
