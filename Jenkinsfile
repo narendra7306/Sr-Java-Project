@@ -22,10 +22,10 @@ pipeline {
         stage('Pushing Docker Image to Jfrog Artifactory') {
             steps {
                 script {
-                    withCredentials([string(credentialsId: 'artifactory-pwd', variable: 'artifactory-pwd')]) {
-                    sh 'docker login -u admin -p ${artifactory-pwd}'
-}
-                    sh 'docker push narendra7306/nginx:1.0'
+                    docker.withRegistry('https://20.244.33.239:8082/', 'artifactory-credential') {
+                        docker.image("narendra7306/nginx:1.0").push()
+                        docker.image("narendra7306/nginx:1.0").push("latest")
+                    }
                 }
             }
         }
