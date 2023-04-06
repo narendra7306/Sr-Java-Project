@@ -14,6 +14,13 @@ pipeline {
                 sh 'mvn clean package'
             }
         }
+        stage('docker build') {
+            steps {
+                script {
+                    dockerImage = docker.build registry
+                }
+            }
+        }
         
     }
 }
