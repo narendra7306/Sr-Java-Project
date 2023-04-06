@@ -19,6 +19,16 @@ pipeline {
                 sh 'docker build -t narendra7306/nginx:1.0 .'
             }
         }
+        stage('Pushing Docker Image to Jfrog Artifactory') {
+            steps {
+                script {
+                    withCredentials([string(credentialsId: 'artifactory-pwd', variable: 'artifactory-pwd')]) {
+                    sh 'docker login -u admin -p ${artifactory-pwd}'
+}
+                    sh 'docker push narendra7306/nginx:1.0'
+                }
+            }
+        }
         
     }
 }
