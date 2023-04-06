@@ -1,10 +1,8 @@
 pipeline {
-    environment {
-        registry = "hub.docker.com//narendra7306"
-        registryCredential = 'dockerhub'
-    }
     agent any
-
+    tools {
+        maven 'maven-3.9.1' 
+    }
     stages {
         stage('git checkout') {
             steps {
@@ -13,15 +11,9 @@ pipeline {
         }
         stage('maven build') {
             steps {
-                tool name: 'maven-3.9.1', type: 'maven'
+                sh 'mvn clean package'
             }
         }
-        stage('docker build') {
-            steps {
-                script {
-                    dockerImage = docker.build registry
-                }
-            }
-        }
+        
     }
 }
