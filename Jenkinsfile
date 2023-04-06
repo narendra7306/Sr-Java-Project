@@ -28,6 +28,7 @@ pipeline {
         stage('Image push') {
             steps {
                 sh 'docker login -u admin -p Naren@7306  http://20.244.33.239:8081'
+                sh 'docker push ${registry}'
             }
         }
         
