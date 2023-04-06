@@ -3,6 +3,10 @@ pipeline {
     tools {
         maven 'maven-3.9.1' 
     }
+    environment {
+        registry = "20.244.33.239:8082/docker-local/java-app:1.0"
+        dockerImage = ""
+    }
     stages {
         stage('git checkout') {
             steps {
@@ -16,17 +20,14 @@ pipeline {
         }
         stage('docker build') {
             steps {
-                sh 'docker build -t narendra7306/nginx:1.0 .'
+                script {
+                    dockerImage = docker.build registry
+                }
             }
         }
-        stage('Pushing Docker Image to Jfrog Artifactory') {
+        stage('Image push') {
             steps {
-                script {
-                    docker.withRegistry('https://20.244.33.239:8082/', 'artifactory-pwd') {
-                        docker.image("narendra7306/nginx:1.0").push()
-                        docker.image("narendra7306/nginx:1.0").push("latest")
-                    }
-                }
+                sh 'docker login -u admin -p Naren@7306  http://20.244.33.239:8081'
             }
         }
         
