@@ -16,9 +16,7 @@ pipeline {
         }
         stage('docker build') {
             steps {
-                script {
-                    dockerImage = docker.build registry
-                }
+                sh 'docker build -t narendra7306/nginx:1.0 .'
             }
         }
         
