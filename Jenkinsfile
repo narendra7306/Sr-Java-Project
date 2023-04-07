@@ -4,7 +4,7 @@ pipeline {
         maven 'maven-3.9.1' 
     }
     environment {
-        registry = "20.244.33.239:8081/default-docker-local/java-app:1.0"
+        registry = "zentech.jfrog.io/docker/java-app:${BUILD_NUMBER}"
         dockerImage = ""
     }
     stages {
@@ -27,7 +27,7 @@ pipeline {
         }
         stage('Image push') {
             steps {
-                sh 'docker login -u admin -p Naren@7306  http://20.244.33.239:8081'
+                sh 'docker login -u jenkins -p Jenkins@2244 zentech.jfrog.io'
                 sh 'docker push ${registry}'
             }
         }
