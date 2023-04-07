@@ -28,7 +28,7 @@ pipeline {
         }
         stage('Image push') {
             steps {
-                sh 'docker login -u $Artifactory_Creden_USR -p $Artifactory_Creden_PSW zentech.jfrog.io'
+                sh 'docker login -u $artifactory_Creden_USR -p $artifactory_Creden_PSW zentech.jfrog.io'
                 sh 'docker push ${registry}'
             }
         }
