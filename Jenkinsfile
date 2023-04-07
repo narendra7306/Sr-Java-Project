@@ -6,6 +6,7 @@ pipeline {
     environment {
         registry = "zentech.jfrog.io/docker/java-app:${BUILD_NUMBER}"
         dockerImage = ""
+        Artifactory_Creden = credentials('artifactory-credentials')
     }
     stages {
         stage('git checkout') {
@@ -27,7 +28,7 @@ pipeline {
         }
         stage('Image push') {
             steps {
-                sh 'docker login -u jenkins -p Jenkins@2244 zentech.jfrog.io'
+                sh 'docker login -u $Artifactory_Creden_USR -p $Artifactory_Creden_PSW zentech.jfrog.io'
                 sh 'docker push ${registry}'
             }
         }
