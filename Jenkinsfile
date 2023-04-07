@@ -6,7 +6,7 @@ pipeline {
     environment {
         registry = "zentech.jfrog.io/docker/java-app:${BUILD_NUMBER}"
         dockerImage = ""
-        Artifactory_Creden = credentials('artifactory-credentials')
+        artifactory_Creden = credentials('artifactory-credentials')
     }
     stages {
         stage('git checkout') {
