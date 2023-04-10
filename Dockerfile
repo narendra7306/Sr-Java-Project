@@ -6,3 +6,7 @@ COPY target/jb-hello-world-maven-0.2.0.jar /demo.jar
 
 # set the startup command to execute the jar
 CMD ["java", "-jar", "/demo.jar"]
+
+EXPOSE 8080
+
+#ENTRYPOINT ["java", "-jar", "/demo.jar"]
